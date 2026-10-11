@@ -1,0 +1,35 @@
+{
+  "name": "Sniper Fishing",
+  "short_name": "Sniper",
+  "description": "Open-source marine forecasting and fishing intelligence for recreational anglers. Read the Sea. Find Your Moment.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1b2d",
+  "theme_color": "#0b1b2d",
+  "lang": "ary",
+  "dir": "rtl",
+  "categories": ["sports", "weather", "utilities"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

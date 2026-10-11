@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-navy-50 text-navy-950 antialiased dark:bg-navy-950 dark:text-navy-100;
+}
+
+/* Arabic script rendering for ar / ary locales */
+.font-arabic {
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+
+/* Keep numeric/technical content LTR even inside RTL text */
+[dir='rtl'] .ltr {
+  direction: ltr;
+  unicode-bidi: embed;
+  display: inline-block;
+}
+
+/* ----------------------------- Leaflet ------------------------------ */
+.leaflet-container {
+  @apply w-full h-full rounded-xl bg-navy-100 dark:bg-navy-900;
+  font: inherit;
+}
+
+.dark .leaflet-tile {
+  filter: brightness(0.75) contrast(1.05) saturate(0.8);
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark .leaflet-control-attribution {
+  background: rgba(18, 40, 63, 0.8) !important;
+  color: #94b7d9 !important;
+}
+
+.dark .leaflet-bar a {
+  background: #12283f;
+  color: #e2ebf5;
+  border-color: #1d3a5a;
+}
+
+/* Custom map markers (divIcon) */
+.sf-marker {
+  background: transparent;
+  border: none;
+}
+
+/* ------------------------------ Forms ------------------------------- */
+.input-base {
+  @apply w-full rounded-lg border border-navy-200 bg-white px-3 py-2 text-sm
+    text-navy-950 shadow-sm outline-none transition
+    placeholder:text-navy-400
+    focus:border-ocean-500 focus:ring-2 focus:ring-ocean-500/30
+    dark:border-navy-700 dark:bg-navy-900 dark:text-navy-100
+    dark:placeholder:text-navy-500;
+}
+
+.label-base {
+  @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-navy-600 dark:text-navy-300;
+}
+
+/* ------------------------------ Print ------------------------------- */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  main {
+    padding: 0 !important;
+  }
+  .print-block {
+    box-shadow: none !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+}
+
+/* Recharts container forces LTR even in RTL locales */
+.chart-ltr {
+  direction: ltr;
+  text-align: left;
+}
