@@ -30,6 +30,14 @@ jobs:
           node-version: 20
           cache: npm
 
+      # Capacitor 7's capacitor-android library compiles with Java 21
+      # (sourceCompatibility VERSION_21) — the runner default (17) fails
+      # with "invalid source release: 21".
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
       - name: Install dependencies
         run: npm ci
 
