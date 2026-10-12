@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sniper Fishing</string>
+    <string name="title_activity_main">Sniper Fishing</string>
+    <string name="package_name">com.sniperfishing.app</string>
+    <string name="custom_url_scheme">com.sniperfishing.app</string>
+</resources>

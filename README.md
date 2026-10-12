@@ -150,6 +150,25 @@ manifest and app icons, and works as an installable offline shell. Cached
 forecasts are labelled with their age — the app never implies offline data is
 live.
 
+### Android app (Capacitor)
+The same web build is wrapped into a native Android app with Capacitor
+(`android/`, `capacitor.config.ts`). No Play Store required — install the
+debug APK directly on any phone (Android 6.0+).
+
+```bash
+# 1. Build the static web bundle (out/) — see script for details
+node scripts/build-web-for-android.mjs
+# 2. Bundle it into the Android project
+npx cap sync android
+# 3. Build the debug APK (needs JDK 17+ and the Android SDK, API 35)
+cd android && ./gradlew assembleDebug
+#    → android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+Every push to `main` also rebuilds the APK on GitHub Actions (workflow:
+`.github/workflows/android-apk.yml`) — download it from the run's **Artifacts**.
+The debug APK is signed with the Android debug keystore (local use only).
+
 ---
 
 ## Project structure

@@ -32,10 +32,12 @@ this workspace, not assumed)._
 | 4 complete locales (ary default, ar, fr, en), RTL, locale-aware units/dates | ✅ | Unit tests (i18n key parity); RTL render in E2E 01 |
 | Onboarding (first launch, default ary, persisted, never overridden by browser detection) | ✅ | E2E spec 01 |
 | PWA (manifest, icons, service worker, offline shell, cached-forecast age labels) | ✅ (build) | `public/sw.js`, `manifest.webmanifest`, icons; conservative caching strategy |
+| Android app (Capacitor debug APK, Android 6.0+, installed directly) | ✅ (build) | `android/`, `capacitor.config.ts`, `scripts/build-web-for-android.mjs`; APK built & verified locally 2026-10-12; GitHub Actions rebuilds on every push to main |
 | Guest mode with no account; local-only storage | ✅ | E2E 06/07/09; no network dependency for core |
 | Unit tests | ✅ **109/109 passed** (12 files) | `npx vitest run`, 2026-10-12 |
 | E2E tests | ✅ **10/10 passed** | `npx playwright test`, 2026-10-12 |
 | Lint / typecheck / build | ✅ clean | `npm run check` + `npm run build` |
+| All pages converted to server page + client component split (required for static export) | ✅ | verified: web build + 10/10 e2e still green after the change |
 
 ## 2. Optional cloud sync (Supabase) — Done, not externally verifiable
 
