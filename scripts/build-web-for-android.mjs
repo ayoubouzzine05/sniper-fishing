@@ -8,6 +8,13 @@
  *   3. Writes a root `out/index.html` that redirects to the user's saved
  *      locale (or the default, Moroccan Darija) — replacing what the
  *      middleware does on the web.
+ *
+ *      IMPORTANT: the redirect target must be the explicit file
+ *      (`/${lang}/index.html`), NOT the bare folder (`/${lang}/`).
+ *      Capacitor's WebViewLocalServer runs in html5 mode by default and
+ *      serves the ROOT index.html for any extension-less path — a folder
+ *      target would redirect back to the root page forever (blank screen).
+ *      An extension target resolves to the real asset file instead.
  *   4. Restores middleware.ts.
  *
  * After it finishes, run:  npx cap sync android
@@ -68,7 +75,7 @@ try {
         }
       } catch (e) { /* fall back to default */ }
       if (!lang) lang = 'ary';
-      location.replace('/' + lang + '/');
+      location.replace('/' + lang + '/index.html');
     })();
   </script>
 </head>
