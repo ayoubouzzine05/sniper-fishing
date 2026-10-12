@@ -12,6 +12,7 @@ on:
       - 'public/**'
       - 'android/**'
       - 'capacitor.config.ts'
+      - '.github/workflows/android-apk.yml'
       - 'next.config.mjs'
       - 'middleware.ts'
       - 'package.json'
