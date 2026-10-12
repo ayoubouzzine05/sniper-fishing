@@ -11,6 +11,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Field, Select, TextArea, TextInput } from '@/components/ui/field';
+import { PhotosField } from '@/components/ui/photos-field';
 import { LoadingState, EmptyState } from '@/components/ui/states';
 import { Badge } from '@/components/ui/badge';
 import MarineMap from '@/components/map/marine-map';
@@ -45,12 +46,13 @@ interface FormState {
   accessNotes: string;
   privateNotes: string;
   isFavorite: boolean;
+  photos: string[];
 }
 
 const EMPTY_FORM: FormState = {
   id: null, name: '', description: '', latitude: '', longitude: '',
   locationType: 'shore', methods: [], targetSpecies: '', accessNotes: '',
-  privateNotes: '', isFavorite: false
+  privateNotes: '', isFavorite: false, photos: []
 };
 
 export default function SpotsPage() {
@@ -101,7 +103,8 @@ export default function SpotsPage() {
       targetSpecies: s.targetSpecies.join(', '),
       accessNotes: s.accessNotes,
       privateNotes: s.privateNotes,
-      isFavorite: s.isFavorite
+      isFavorite: s.isFavorite,
+      photos: s.photos
     });
     setShowMap(false);
   }
@@ -128,6 +131,7 @@ export default function SpotsPage() {
       accessNotes: form.accessNotes,
       privateNotes: form.privateNotes,
       isFavorite: form.isFavorite,
+      photos: form.photos,
       createdAt: now,
       updatedAt: now
     };
@@ -311,6 +315,12 @@ export default function SpotsPage() {
             <Field label={t('spots.privateNotes')}>
               <TextArea value={form.privateNotes} onChange={(e) => setForm({ ...form, privateNotes: e.target.value })} />
             </Field>
+            <PhotosField
+              label={t('spots.photos')}
+              photos={form.photos}
+              onChange={(photos) => setForm({ ...form, photos })}
+              testId="spot-photos"
+            />
             <label className="flex items-center gap-2 text-sm font-semibold">
               <input
                 type="checkbox"
@@ -362,6 +372,18 @@ export default function SpotsPage() {
                     </div>
                   </div>
                   {s.description ? <p className="line-clamp-2 text-xs text-navy-600 dark:text-navy-300">{s.description}</p> : null}
+                  {s.photos.length > 0 ? (
+                    <div className="flex flex-wrap gap-1.5">
+                      {s.photos.slice(0, 4).map((p, i) => (
+                        <img
+                          key={i}
+                          src={p}
+                          alt={s.name}
+                          className="h-12 w-12 rounded-lg border border-navy-200 object-cover dark:border-navy-700"
+                        />
+                      ))}
+                    </div>
+                  ) : null}
                   {s.methods.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
                       {s.methods.map((m) => (

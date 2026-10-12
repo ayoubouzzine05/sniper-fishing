@@ -288,7 +288,8 @@
     "importJson": "Importer des zones (JSON)",
     "privacy": "Vos zones sont stockées uniquement sur cet appareil. Elles ne sont jamais partagées ni publiées.",
     "saved": "Zone enregistrée",
-    "coordsError": "Les coordonnées doivent être valides (lat −90…90, lon −180…180)"
+    "coordsError": "Les coordonnées doivent être valides (lat −90…90, lon −180…180)",
+    "photos": "Photos"
   },
   "planner": {
     "title": "Planificateur de sortie",
@@ -359,7 +360,8 @@
     "avgRain": "Pluie moyenne",
     "saved": "Session enregistrée",
     "noSessionsForAnalytics": "Enregistrez au moins une session pour voir les analyses.",
-    "catchCount": "{n, plural, =0 {aucune capture} one {# capture} other {# captures}}"
+    "catchCount": "{n, plural, =0 {aucune capture} one {# capture} other {# captures}}",
+    "sessionPhotos": "Photos de la session"
   },
   "settings": {
     "title": "Réglages",
@@ -415,5 +417,11 @@
     "network": "Erreur réseau — vérifiez votre connexion",
     "retryHint": "Vérifiez votre connexion, puis réessayez.",
     "staleAvailable": "Affichage des dernières données en cache (âgées de {age})"
+  },
+  "photos": {
+    "add": "Ajouter des photos",
+    "remove": "Retirer la photo",
+    "tooLarge": "Une ou plusieurs photos sont trop lourdes (max 500 Ko chacune).",
+    "max": "Maximum {count} photos."
   }
 }

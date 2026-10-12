@@ -288,7 +288,8 @@
     "importJson": "Import spots (JSON)",
     "privacy": "Your spots are stored on this device only. They are never shared or published.",
     "saved": "Spot saved",
-    "coordsError": "Coordinates must be within valid ranges (lat −90…90, lon −180…180)"
+    "coordsError": "Coordinates must be within valid ranges (lat −90…90, lon −180…180)",
+    "photos": "Photos"
   },
   "planner": {
     "title": "Trip planner",
@@ -359,7 +360,8 @@
     "avgRain": "Avg rain",
     "saved": "Session saved",
     "noSessionsForAnalytics": "Log at least one session to see analytics.",
-    "catchCount": "{n, plural, =0 {no catches} one {# catch} other {# catches}}"
+    "catchCount": "{n, plural, =0 {no catches} one {# catch} other {# catches}}",
+    "sessionPhotos": "Session photos"
   },
   "settings": {
     "title": "Settings",
@@ -415,5 +417,11 @@
     "network": "Network error — check your connection",
     "retryHint": "Check your connection, then retry.",
     "staleAvailable": "Showing last cached data ({age} old)"
+  },
+  "photos": {
+    "add": "Add photos",
+    "remove": "Remove photo",
+    "tooLarge": "One or more photos are too large (max 500 KB each).",
+    "max": "Maximum {count} photos."
   }
 }

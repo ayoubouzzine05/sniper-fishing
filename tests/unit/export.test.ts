@@ -23,6 +23,7 @@ function makeSpot(overrides: Partial<Spot> = {}): Spot {
     isFavorite: true,
     createdAt: '2026-10-11T08:00:00.000Z',
     updatedAt: '2026-10-11T08:00:00.000Z',
+    photos: [],
     ...overrides
   };
 }
@@ -56,6 +57,7 @@ function makeSession(overrides: Partial<FishingSession> = {}): FishingSession {
     ],
     createdAt: '2026-10-11T10:00:00.000Z',
     updatedAt: '2026-10-11T10:00:00.000Z',
+    photos: [],
     ...overrides
   };
 }

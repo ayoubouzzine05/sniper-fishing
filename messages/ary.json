@@ -288,7 +288,8 @@
     "importJson": "استورد بلاصت (JSON)",
     "privacy": "بلاصت ديالك متسجلين غير فهاد الجهاز. ما كنشيروهمش ولا كننشريوهمش.",
     "saved": "البلاصة تسجلات",
-    "coordsError": "الإحداثيات لازم يكونو فيهم النطاق (خط العرض −90…90، خط الطول −180…180)"
+    "coordsError": "الإحداثيات لازم يكونو فيهم النطاق (خط العرض −90…90، خط الطول −180…180)",
+    "photos": "t-tsawer"
   },
   "planner": {
     "title": "تخطيط الرحلة",
@@ -359,7 +360,8 @@
     "avgRain": "القطرة بالمتوسط",
     "saved": "الجولة تسجلات",
     "noSessionsForAnalytics": "سجّل على الأقل جولة وحدة باش تشوف الإحصائيات.",
-    "catchCount": "{n, plural, zero {ماشي والو} one {سمكة وحدة} two {سمتين} few {# سمكات} many {# سمكة} other {# سمكة}}"
+    "catchCount": "{n, plural, zero {ماشي والو} one {سمكة وحدة} two {سمتين} few {# سمكات} many {# سمكة} other {# سمكة}}",
+    "sessionPhotos": "tsawer dyal l session"
   },
   "settings": {
     "title": "الإعدادات",
@@ -415,5 +417,11 @@
     "network": "مشكل فالانترنت — شوف الاتصال ديالك",
     "retryHint": "شوف الاتصال ديالك و جرب مرة أخرى.",
     "staleAvailable": "كنوريو آخر البيانات المخزنة ({age} قدامها)"
+  },
+  "photos": {
+    "add": "zid t-tsawer",
+    "remove": "h-id hadi t-tsawra",
+    "tooLarge": "wa7ed wla ktri t-tsawer kbaryin bzzaf (al had 500 KB l wa7ed).",
+    "max": "al had {count} t-tsawer."
   }
 }

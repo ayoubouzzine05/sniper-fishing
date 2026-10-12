@@ -10,6 +10,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Card, CardBody, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Field, Select, TextArea, TextInput } from '@/components/ui/field';
+import { PhotosField } from '@/components/ui/photos-field';
 import { useSettings } from '@/lib/hooks/use-settings';
 import { useForecast } from '@/lib/hooks/use-forecast';
 import { snapshotNearestNow } from '@/lib/providers/merge';
@@ -45,6 +46,7 @@ export function SessionForm({
   const [spotId, setSpotId] = useState(existing?.spotId ?? '');
   const [spots, setSpots] = useState<Spot[]>([]);
   const [catches, setCatches] = useState<CatchEntry[]>(existing?.catches ?? []);
+  const [photos, setPhotos] = useState<string[]>(existing?.photos ?? []);
   const [zeroCatch, setZeroCatch] = useState(existing ? existing.catches.length === 0 : false);
   const [photoError, setPhotoError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
@@ -127,6 +129,7 @@ export function SessionForm({
             }
           : existing?.conditions ?? null,
       catches: zeroCatch ? [] : catches.filter((c) => c.species.trim().length > 0),
+      photos,
       createdAt: existing?.createdAt ?? now,
       updatedAt: now
     };
@@ -277,6 +280,13 @@ export function SessionForm({
             </ul>
           )}
         </div>
+
+        <PhotosField
+          label={t('logbook.sessionPhotos')}
+          photos={photos}
+          onChange={setPhotos}
+          testId="session-photos"
+        />
 
         <Field label={t('logbook.notes')}>
           <TextArea value={notes} onChange={(e) => setNotes(e.target.value)} />

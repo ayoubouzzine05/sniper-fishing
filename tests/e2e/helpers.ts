@@ -74,3 +74,13 @@ export async function expectDashboardLive(page: Page): Promise<void> {
   // accessible name (role=img).
   await expect(page.getByRole('img', { name: /\d+\/100/ }).first()).toBeVisible({ timeout: 30_000 });
 }
+
+/** A tiny valid 1x1 JPEG used for photo-upload e2e steps. */
+export const TINY_JPEG = {
+  name: 'e2e-photo.jpg',
+  mimeType: 'image/jpeg',
+  buffer: Buffer.from(
+    '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAALCAABAAEBAREA/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/2gAIAQEAAD8AVN//2Q==',
+    'base64'
+  )
+};

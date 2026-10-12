@@ -4,7 +4,7 @@
  * no account required).
  */
 import { test, expect } from '@playwright/test';
-import { onboardEnglish } from './helpers';
+import { onboardEnglish, TINY_JPEG } from './helpers';
 
 test('spots and settings persist across reloads without an account', async ({ page }) => {
   await onboardEnglish(page);
@@ -17,6 +17,9 @@ test('spots and settings persist across reloads without an account', async ({ pa
   await page.getByPlaceholder('e.g. Nord jetty — rock line').fill('Persistent Spot');
   await page.getByPlaceholder('35.7595').fill('35.80');
   await page.getByPlaceholder('-5.8340').fill('-5.90');
+  await page.getByTestId('spot-photos').setInputFiles(TINY_JPEG);
+  // Upload is async (FileReader) — wait for the preview to land in the form.
+  await expect(page.getByRole('button', { name: 'Remove photo' }).first()).toBeVisible({ timeout: 5_000 });
   await page.getByRole('button', { name: 'Save', exact: true }).click();
   await expect(page.getByText('Persistent Spot', { exact: true }).first()).toBeVisible({ timeout: 15_000 });
 
@@ -31,4 +34,6 @@ test('spots and settings persist across reloads without an account', async ({ pa
 
   await page.getByRole('navigation').getByRole('link', { name: 'Fishing Spots' }).click();
   await expect(page.getByText('Persistent Spot', { exact: true }).first()).toBeVisible({ timeout: 20_000 });
+  // The spot photo survived the reload too.
+  await expect(page.getByRole('img', { name: 'Persistent Spot' })).toBeVisible({ timeout: 20_000 });
 });

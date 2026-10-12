@@ -199,6 +199,19 @@ export default function LogbookPage() {
                         </ul>
                       ) : null}
 
+                      {s.photos.length > 0 ? (
+                        <div className="mt-2 flex flex-wrap gap-1.5">
+                          {s.photos.map((p, i) => (
+                            <img
+                              key={i}
+                              src={p}
+                              alt={t('logbook.sessionPhotos')}
+                              className="h-12 w-12 rounded-lg border border-navy-200 object-cover dark:border-navy-700"
+                            />
+                          ))}
+                        </div>
+                      ) : null}
+
                       {s.notes ? <p className="mt-2 text-xs text-navy-500">{s.notes}</p> : null}
                       {s.conditions ? (
                         <p className="mt-1 text-[11px] text-navy-400">

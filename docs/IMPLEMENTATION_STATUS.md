@@ -22,10 +22,10 @@ this workspace, not assumed)._
 | Geocoding search + map pick (Leaflet/OSM) | ✅ | E2E spec 03 (real geocode of Essaouira) |
 | Forecast page (method, preset, date, window, gauge, breakdown, windows, attribution) | ✅ | E2E spec 04 |
 | Method change re-renders assessment | ✅ | E2E spec 05 |
-| Fishing spots CRUD + privacy (private notes hidden from list) + export/import | ✅ | E2E spec 06; unit tests (export) |
-| Catch logbook (sessions, catches, photo ≤500KB, conditions snapshot, zero-catch) | ✅ | E2E spec 07; unit tests (analytics) |
+| Fishing spots CRUD + privacy (private notes hidden from list) + photos + export/import | ✅ | E2E spec 06 (incl. photo upload); unit tests (export, storage) |
+| Catch logbook (sessions, catches, catch + session photos ≤500KB, conditions snapshot, zero-catch) | ✅ | E2E spec 07 (incl. session photo); unit tests (analytics) |
 | Trip planner (localized report, hourly table, windows, warnings/data gaps, JSON export, print) | ✅ | E2E spec 08 |
-| Persistence across reloads (guest, no account) | ✅ | E2E spec 09; unit tests (storage incl. settings fast-path) |
+| Persistence across reloads (guest, no account), incl. spot photos | ✅ | E2E spec 09; unit tests (storage incl. settings fast-path, photo round-trips) |
 | Provider failure → useful error + retry, no fake data, no score invented | ✅ | E2E spec 10 (network aborted); unit tests (missing/invalid) |
 | Transparent 0–100 scoring per method + per-factor explanation + separate completeness | ✅ | Unit tests (scoring, normalize); E2E 02/04 |
 | Independent safety assessment, never overridden by score | ✅ | Unit tests (safety, incl. overrides) |
@@ -33,8 +33,8 @@ this workspace, not assumed)._
 | Onboarding (first launch, default ary, persisted, never overridden by browser detection) | ✅ | E2E spec 01 |
 | PWA (manifest, icons, service worker, offline shell, cached-forecast age labels) | ✅ (build) | `public/sw.js`, `manifest.webmanifest`, icons; conservative caching strategy |
 | Guest mode with no account; local-only storage | ✅ | E2E 06/07/09; no network dependency for core |
-| Unit tests | ✅ **107/107 passed** (12 files) | `npx vitest run`, 2026-10-11 |
-| E2E tests | ✅ **10/10 passed** | `npx playwright test`, 2026-10-11 |
+| Unit tests | ✅ **109/109 passed** (12 files) | `npx vitest run`, 2026-10-12 |
+| E2E tests | ✅ **10/10 passed** | `npx playwright test`, 2026-10-12 |
 | Lint / typecheck / build | ✅ clean | `npm run check` + `npm run build` |
 
 ## 2. Optional cloud sync (Supabase) — Done, not externally verifiable
@@ -125,5 +125,5 @@ npm run build
 npm run test:e2e       # 10 Playwright flows against a prod build + live APIs
 ```
 
-Results as of 2026-10-11: **unit 107/107**, **e2e 10/10**, lint/typecheck/build
+Results as of 2026-10-12: **unit 109/109**, **e2e 10/10**, lint/typecheck/build
 clean. (E2E requires network access to the free Open-Meteo endpoints.)

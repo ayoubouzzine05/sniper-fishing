@@ -134,6 +134,7 @@ export default function SettingsPage() {
             access_notes: s.accessNotes,
             private_notes: s.privateNotes,
             is_favorite: s.isFavorite,
+            photos: s.photos,
             created_at: s.createdAt,
             updated_at: s.updatedAt
           })),
@@ -157,6 +158,7 @@ export default function SettingsPage() {
             notes: s.notes,
             conditions: s.conditions,
             catches: s.catches,
+            photos: s.photos,
             created_at: s.createdAt,
             updated_at: s.updatedAt
           })),

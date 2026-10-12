@@ -141,6 +141,7 @@ export default function MapPage() {
                       accessNotes: '',
                       privateNotes: '',
                       isFavorite: false,
+                      photos: [],
                       createdAt: nowIso,
                       updatedAt: nowIso
                     };

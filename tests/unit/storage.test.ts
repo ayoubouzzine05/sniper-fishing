@@ -45,6 +45,7 @@ function makeSpot(overrides: Partial<Spot> = {}): Spot {
     isFavorite: false,
     createdAt: NOW,
     updatedAt: NOW,
+    photos: [],
     ...overrides
   };
 }
@@ -78,6 +79,7 @@ function makeSession(overrides: Partial<FishingSession> = {}): FishingSession {
     ],
     createdAt: NOW,
     updatedAt: NOW,
+    photos: [],
     ...overrides
   };
 }
@@ -267,5 +269,25 @@ describe('Zod import validation', () => {
     expect(BackupSchema.safeParse({ ...backup, version: 99 }).success).toBe(false);
     // A bare spot array is NOT a backup.
     expect(BackupSchema.safeParse(makeSpot()).success).toBe(false);
+  });
+});
+
+describe('photos', () => {
+  it('defaults photos to [] for legacy objects (schema normalization)', () => {
+    expect(SpotSchema.parse(makeSpot()).photos).toEqual([]);
+    expect(SessionSchema.parse(makeSession()).photos).toEqual([]);
+  });
+
+  it('round-trips spot and session photos through IndexedDB', async () => {
+    await wipeAllData();
+    const spot = { ...makeSpot(), id: 's-photo', photos: ['data:image/jpeg;base64,QUJD'] };
+    await saveSpot(spot);
+    const spotAll = await listSpots();
+    expect(spotAll.find((s) => s.id === 's-photo')?.photos).toEqual(['data:image/jpeg;base64,QUJD']);
+
+    const session = { ...makeSession(), id: 'sess-photo', photos: ['data:image/png;base64,WFla'] };
+    await saveSession(session);
+    const sessionAll = await listSessions();
+    expect(sessionAll.find((s) => s.id === 'sess-photo')?.photos).toEqual(['data:image/png;base64,WFla']);
   });
 });

@@ -34,6 +34,7 @@ function sess(overrides: Partial<FishingSession>): FishingSession {
     catches: [
       { id: 'c1', species: 'sea bream', weightGrams: 1000, lengthCm: 40, kept: true, note: '', photoDataUrl: null }
     ],
+    photos: [],
     createdAt: '2026-10-05T10:00:00Z',
     updatedAt: '2026-10-05T10:00:00Z',
     ...overrides

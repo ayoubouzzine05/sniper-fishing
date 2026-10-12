@@ -326,6 +326,8 @@ export interface Spot {
   accessNotes: string;
   privateNotes: string;
   isFavorite: boolean;
+  /** Photos as data URLs (each < 500 KB, stored locally); [] when none. */
+  photos: string[];
   createdAt: string;
   updatedAt: string;
 }
@@ -368,6 +370,8 @@ export interface FishingSession {
   notes: string;
   conditions: SessionConditions | null;
   catches: CatchEntry[];
+  /** Session photos as data URLs (each < 500 KB, stored locally); [] when none. */
+  photos: string[];
   createdAt: string;
   updatedAt: string;
 }

@@ -4,7 +4,7 @@
  * conditions snapshot note when live data was available.
  */
 import { test, expect } from '@playwright/test';
-import { onboardEnglish, pickTangier, expectDashboardLive } from './helpers';
+import { onboardEnglish, pickTangier, expectDashboardLive, TINY_JPEG } from './helpers';
 
 test('create a logbook session with one catch', async ({ page }) => {
   await onboardEnglish(page);
@@ -27,6 +27,10 @@ test('create a logbook session with one catch', async ({ page }) => {
   await page.getByLabel('Species', { exact: true }).fill('sea bream');
   await page.getByLabel('Weight (g)').fill('750');
   await page.getByLabel('Length (cm)').fill('36');
+  // Attach a session photo (kept locally as a data URL).
+  await page.getByTestId('session-photos').setInputFiles(TINY_JPEG);
+  // Upload is async (FileReader) — wait for the preview to land in the form.
+  await expect(page.getByRole('button', { name: 'Remove photo' }).first()).toBeVisible({ timeout: 5_000 });
 
   await page.getByRole('button', { name: 'Save', exact: true }).click();
 
@@ -36,4 +40,6 @@ test('create a logbook session with one catch', async ({ page }) => {
   await expect(page.getByText('dead shad').first()).toBeVisible();
   // The session shows one catch.
   await expect(page.getByText(/1 catch|1 fish/i).first()).toBeVisible({ timeout: 10_000 });
+  // The attached session photo renders on the card.
+  await expect(page.getByRole('img', { name: 'Session photos' })).toBeVisible();
 });

@@ -35,6 +35,7 @@ create table if not exists public.spots (
   access_notes  text        not null default '',
   private_notes text        not null default '',
   is_favorite   boolean     not null default false,
+  photos        jsonb       not null default '[]'::jsonb, -- string[] data URLs (local photos)
   created_at    timestamptz not null default now(),
   updated_at    timestamptz not null default now(),
   -- One row per (user, spot id): the same generated id under two different
@@ -63,6 +64,7 @@ create table if not exists public.sessions (
   notes            text        not null default '',
   conditions       jsonb       null,       -- SessionConditions snapshot (or null)
   catches          jsonb       not null default '[]'::jsonb, -- CatchEntry[]
+  photos           jsonb       not null default '[]'::jsonb, -- string[] data URLs (local photos)
   created_at       timestamptz not null default now(),
   updated_at       timestamptz not null default now(),
   primary key (user_id, id)

@@ -52,6 +52,7 @@ export const SpotSchema = z.object({
   accessNotes: z.string().max(2000).default(''),
   privateNotes: z.string().max(4000).default(''),
   isFavorite: z.boolean().default(false),
+  photos: z.array(z.string().max(800_000)).max(6).default([]),
   createdAt: z.string().datetime({ offset: true }).or(z.string().min(1)),
   updatedAt: z.string().datetime({ offset: true }).or(z.string().min(1))
 });
@@ -95,6 +96,7 @@ export const SessionSchema = z.object({
   notes: z.string().max(4000).default(''),
   conditions: SessionConditionsSchema.nullable().default(null),
   catches: z.array(CatchEntrySchema).max(500).default([]),
+  photos: z.array(z.string().max(800_000)).max(6).default([]),
   createdAt: z.string().min(1),
   updatedAt: z.string().min(1)
 });

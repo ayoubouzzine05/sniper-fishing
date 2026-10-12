@@ -4,7 +4,7 @@
  * never shown in the list (only in the editor).
  */
 import { test, expect } from '@playwright/test';
-import { onboardEnglish } from './helpers';
+import { onboardEnglish, TINY_JPEG } from './helpers';
 
 test('create a spot with manual coordinates', async ({ page }) => {
   await onboardEnglish(page);
@@ -32,6 +32,10 @@ test('create a spot with manual coordinates', async ({ page }) => {
   await page.getByLabel('Target species (comma separated)').fill('sea bream, sea bass');
   // Private notes (must not leak into the list view)
   await page.getByLabel('Private notes').fill('SECRET-POSITION-42');
+  // Attach a photo (kept locally as a data URL).
+  await page.getByTestId('spot-photos').setInputFiles(TINY_JPEG);
+  // Upload is async (FileReader) — wait for the preview to land in the form.
+  await expect(page.getByRole('button', { name: 'Remove photo' }).first()).toBeVisible({ timeout: 5_000 });
 
   await page.getByRole('button', { name: 'Save', exact: true }).click();
 
@@ -40,4 +44,6 @@ test('create a spot with manual coordinates', async ({ page }) => {
   await expect(page.getByText('E2E Rock', { exact: true }).first()).toBeVisible();
   // Private notes must NOT appear in the list view.
   await expect(page.getByText('SECRET-POSITION-42')).toHaveCount(0);
+  // The attached photo renders as a thumbnail on the list card.
+  await expect(page.getByRole('img', { name: 'E2E Rock' })).toBeVisible();
 });

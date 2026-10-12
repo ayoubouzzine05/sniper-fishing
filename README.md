@@ -38,10 +38,12 @@ English**, with full RTL support.
 - **Trip planner** — generate a localized, printable/exportable report for a
   planned session (hour-by-hour conditions, averages, warnings, data gaps).
 - **Fishing spots** — full CRUD, manual coordinates or map pick, types,
-  methods, target species, access notes, favorites and **private notes** that
-  are never shown in the list. Export/import JSON + CSV.
+  methods, target species, photos (≤ 500 KB each, stored on device), access
+  notes, favorites and **private notes** that are never shown in the list.
+  Export/import JSON + CSV.
 - **Catch logbook** — sessions with catches (species, weight, length, optional
-  photo ≤ 500 KB), bait/lure, equipment, an auto-captured conditions snapshot,
+  photo ≤ 500 KB), session photos, bait/lure, equipment, an auto-captured
+  conditions snapshot,
   zero-catch support, and **personal-only analytics** (sessions/month, by
   species, catch rate, by method/location, bait performance, "conditions when
   you caught fish") with a clear correlation-≠-causation disclaimer.
